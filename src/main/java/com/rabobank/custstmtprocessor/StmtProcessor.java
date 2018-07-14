@@ -26,9 +26,9 @@ public class StmtProcessor {
 					.processFile(inputFilePath);
 			CustomerRecordValidator validator = new CustomerRecordValidator();
 			validator.validate(listCustomerRecords);
-			FailureRecordsReportGenerator
-					.generateFailureRecordsReport(validator
-							.getInvalidCustomerRecords());
+			FailureRecordsReportGenerator.getInstance()
+					.generateFailureRecordsReport(
+							validator.getInvalidCustomerRecords());
 		} catch (BusinessOperationException e) {
 			System.err.println(e.getMessage());
 		}

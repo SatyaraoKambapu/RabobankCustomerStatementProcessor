@@ -13,31 +13,15 @@ import com.rabobank.custstmtprocessor.entity.CustomerRecords;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
 /**
- * Used singleton design pattern, this is the class to parse the xml into Java
- * objects.
+ * This is the class to parse the xml into Java objects.
  * 
  * @author skambapu
  * 
  */
-public class XmlFileReader {
+public class XmlFileReader implements
+		com.rabobank.custstmtprocessor.common.FileReader {
 
-	private static XmlFileReader instancce = null;
-
-	private XmlFileReader() {
-		// private constructor
-	}
-
-	public static XmlFileReader getInstance() {
-		if (instancce == null) {
-			synchronized (XmlFileReader.class) {
-				if (instancce == null) {
-					instancce = new XmlFileReader();
-				}
-			}
-		}
-		return instancce;
-	}
-
+	@Override
 	public List<CustomerRecord> processInputFile(File inputF)
 			throws BusinessOperationException {
 		CustomerRecords customerRecords = null;

@@ -14,32 +14,17 @@ import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
 /**
- * This is Singleton design pattern, should be initializaed per application only
- * once.
+ * This is to read the CSV file and convert into Java Objects.
  * 
  * @author skambapu
  * 
  */
-public class CsvFileReader {
+public class CsvFileReader implements com.rabobank.custstmtprocessor.common.FileReader {
 
-	private static CsvFileReader instancce = null;
-
-	private CsvFileReader() {
-		// private constructor
-	}
-
-	public static CsvFileReader getInstance() {
-		if (instancce == null) {
-			synchronized (CsvFileReader.class) {
-				if (instancce == null) {
-					instancce = new CsvFileReader();
-				}
-			}
-		}
-		return instancce;
-	}
-
-	@SuppressWarnings("resource")
+	/* (non-Javadoc)
+	 * @see com.rabobank.custstmtprocessor.readers.FileReader#processInputFile(java.io.File)
+	 */
+	@Override
 	public List<CustomerRecord> processInputFile(File inputF)
 			throws BusinessOperationException {
 		BufferedReader br;
@@ -47,12 +32,14 @@ public class CsvFileReader {
 		List<CustomerRecord> list = new ArrayList<>();
 		try {
 			br = new BufferedReader(new FileReader(inputF));
-			String header = br.readLine(); // Just skipping and consuming the Header of csv file.
+			String header = br.readLine(); // Just skipping and consuming the
+											// Header of csv file.
 			while ((line = br.readLine()) != null) {
 				// use comma as separator
 				String[] cols = line.split(",");
 				if (cols.length != 6) {
-					throw new BusinessOperationException(ErrorMessages.CSV_FILE_COLUMNS);
+					throw new BusinessOperationException(
+							ErrorMessages.CSV_FILE_COLUMNS);
 				}
 				CustomerRecord customerRecord = new CustomerRecord();
 				customerRecord.setRecord_referenceId(Long.valueOf(cols[0]));
