@@ -101,6 +101,7 @@ public class CustomerRecord {
 		return result;
 	}
 
+	// Added this for Object comparison.
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -9,7 +9,6 @@ import javax.xml.bind.Unmarshaller;
 
 import com.rabobank.custstmtprocessor.CustomerRecord;
 import com.rabobank.custstmtprocessor.CustomerRecords;
-import com.rabobank.custstmtprocessor.common.SupportedFileType;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
 /**

@@ -7,13 +7,21 @@ import com.rabobank.custstmtprocessor.processor.FileProcessor;
 import com.rabobank.custstmtprocessor.reportgen.FailureRecordsReportGenerator;
 import com.rabobank.custstmtprocessor.validators.CustomerReaderValidator;
 
+/**
+ * This is the Entry point Main class to process the Statement for file types
+ * either CSV or XML.
+ * 
+ * @author skambapu
+ * 
+ */
 public class StmtProcessor {
 	public static void main(String[] args) {
 		try {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter the file path.");
 			String inputFilePath = sc.nextLine();
-			List<CustomerRecord> listCustomerRecords = FileProcessor.processFile(inputFilePath);
+			List<CustomerRecord> listCustomerRecords = FileProcessor
+					.processFile(inputFilePath);
 			CustomerReaderValidator validator = new CustomerReaderValidator();
 			validator.validate(listCustomerRecords);
 			FailureRecordsReportGenerator

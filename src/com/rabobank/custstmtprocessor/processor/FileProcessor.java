@@ -8,6 +8,12 @@ import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 import com.rabobank.custstmtprocessor.readers.CsvFileReader;
 import com.rabobank.custstmtprocessor.readers.XmlFileReader;
 
+/**
+ * This Processor class will decide which file type need to be processed.
+ * 
+ * @author skambapu
+ * 
+ */
 public class FileProcessor {
 
 	public static List<CustomerRecord> processFile(String inputFilePath)

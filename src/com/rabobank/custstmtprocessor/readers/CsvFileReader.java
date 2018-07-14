@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rabobank.custstmtprocessor.CustomerRecord;
-import com.rabobank.custstmtprocessor.common.SupportedFileType;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
 /**

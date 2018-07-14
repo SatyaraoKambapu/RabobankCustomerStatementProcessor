@@ -7,9 +7,17 @@ import java.util.Set;
 
 import com.rabobank.custstmtprocessor.CustomerRecord;
 
+/**
+ * This class Validates both references and end-balances, Also gives the set of
+ * invalid records.
+ * 
+ * @author skambapu
+ * 
+ */
 public class CustomerReaderValidator {
 
 	Set<CustomerRecord> invalidCustomerRecords = new HashSet<CustomerRecord>();
+
 	public Set<CustomerRecord> getInvalidCustomerRecords() {
 		return invalidCustomerRecords;
 	}
@@ -43,13 +51,8 @@ public class CustomerReaderValidator {
 		BigDecimal startBalance = customerRecord.getStartBalance();
 		BigDecimal endBalance = startBalance.add(mutation);
 		if (endBalance.compareTo(customerRecord.getEndBalance()) == 0) {
-			System.out.println("Endbalances are good for reference - "
-					+ customerRecord.getRecord_referenceId());
 			return true;
 		} else {
-			System.err
-					.println("Oh !!!Incorrect endbalance found for the record -"
-							+ referenceId);
 			return false;
 		}
 	}
@@ -58,11 +61,8 @@ public class CustomerReaderValidator {
 			Long customerRecordReferenceId) {
 		if (setRefernces.add(customerRecordReferenceId)) {
 			// All references are unique.
-			System.out.println("Well! All references are unique.");
 			return true;
 		} else {
-			System.err.println("Duplicate reference found. "
-					+ customerRecordReferenceId);
 			return false;
 		}
 	}
