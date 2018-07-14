@@ -1,7 +1,7 @@
 package com.rabobank.custstmtprocessor.common;
 
 public class ErrorMessages {
-	public static final String IRRELEVANT_FILE = "Irrelevant file type!!!, Please enter either xml or csv file path.";
+	public static final String IRRELEVANT_FILE = "File Type Not Supported.";
 
 	public static final String NO_RECORDS_FOUND = "No records found in the file.";
 
