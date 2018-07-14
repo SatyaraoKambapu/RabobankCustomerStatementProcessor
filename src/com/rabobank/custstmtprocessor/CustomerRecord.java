@@ -2,12 +2,36 @@ package com.rabobank.custstmtprocessor;
 
 import java.math.BigDecimal;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ * 
+ * This is the class to have single record information. This class will be used
+ * for both xml parsing and csv file parsing. To unmarshal the xml into single
+ * java object, we need to have the annotations from package
+ * javax.xml.bind.annotation.*.
+ * 
+ * @author skambapu
+ * 
+ */
+@XmlRootElement(name = "record")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CustomerRecord {
+	@XmlAttribute(name = "reference")
 	private long record_referenceId;
+	@XmlElement(name = "accountNumber")
 	private String accountNumber;
+	@XmlElement(name = "description")
 	private String description;
+	@XmlElement(name = "startBalance")
 	private BigDecimal startBalance;
+	@XmlElement(name = "mutation")
 	private BigDecimal mutation;
+	@XmlElement(name = "endBalance")
 	private BigDecimal endBalance;
 
 	public long getRecord_referenceId() {

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rabobank.custstmtprocessor.CustomerRecord;
+import com.rabobank.custstmtprocessor.common.SupportedFileType;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
 /**
@@ -39,14 +40,18 @@ public class CsvFileReader {
 	}
 
 	@SuppressWarnings("resource")
-	public List<CustomerRecord> processInputFile(String inputFilePath) throws BusinessOperationException {
+	public List<CustomerRecord> processInputFile(String inputFilePath)
+			throws BusinessOperationException {
 		BufferedReader br;
 		String line;
 		List<CustomerRecord> list = new ArrayList<>();
 		try {
 			if (inputFilePath == null || "".equals(inputFilePath)) {
-				System.err.println("Please provide proper input file path.");
-				return list;
+				throw new BusinessOperationException(
+						"Please provide proper input csv file path.");
+			} else if (!inputFilePath.contains(SupportedFileType.csv.toString())) {
+				throw new BusinessOperationException(
+						"Entered file is not CSV file, Please enter csv file only for statement processor.");
 			}
 			File inputF = new File(inputFilePath);
 			br = new BufferedReader(new FileReader(inputF));
