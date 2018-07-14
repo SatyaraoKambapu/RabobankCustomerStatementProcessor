@@ -2,7 +2,7 @@ package com.rabobank.custstmtprocessor.reportgen;
 
 import java.util.Set;
 
-import com.rabobank.custstmtprocessor.CustomerRecord;
+import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 
 /**
  * This class Job is to generate the records report which are failure.

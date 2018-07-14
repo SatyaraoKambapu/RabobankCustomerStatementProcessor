@@ -1,7 +1,9 @@
+package com.rabobank.custstmtprocessor;
+
 import java.util.List;
 import java.util.Scanner;
 
-import com.rabobank.custstmtprocessor.CustomerRecord;
+import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 import com.rabobank.custstmtprocessor.processor.FileProcessor;
 import com.rabobank.custstmtprocessor.reportgen.FailureRecordsReportGenerator;

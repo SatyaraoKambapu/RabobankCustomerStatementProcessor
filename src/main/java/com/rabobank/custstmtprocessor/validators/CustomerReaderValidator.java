@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.rabobank.custstmtprocessor.CustomerRecord;
+import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 
 /**
  * This class Validates both references and end-balances, Also gives the set of

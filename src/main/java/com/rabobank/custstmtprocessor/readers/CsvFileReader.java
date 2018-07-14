@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rabobank.custstmtprocessor.CustomerRecord;
+import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
 /**

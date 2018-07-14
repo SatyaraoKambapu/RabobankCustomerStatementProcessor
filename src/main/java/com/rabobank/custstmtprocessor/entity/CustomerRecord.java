@@ -1,4 +1,4 @@
-package com.rabobank.custstmtprocessor;
+package com.rabobank.custstmtprocessor.entity;
 
 import java.math.BigDecimal;
 

@@ -2,8 +2,8 @@ package com.rabobank.custstmtprocessor.processor;
 
 import java.util.List;
 
-import com.rabobank.custstmtprocessor.CustomerRecord;
 import com.rabobank.custstmtprocessor.common.SupportedFileType;
+import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 import com.rabobank.custstmtprocessor.readers.CsvFileReader;
 import com.rabobank.custstmtprocessor.readers.XmlFileReader;
