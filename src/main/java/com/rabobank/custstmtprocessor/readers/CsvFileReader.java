@@ -40,23 +40,17 @@ public class CsvFileReader {
 	}
 
 	@SuppressWarnings("resource")
-	public List<CustomerRecord> processInputFile(String inputFilePath)
+	public List<CustomerRecord> processInputFile(File inputF)
 			throws BusinessOperationException {
 		BufferedReader br;
 		String line;
 		List<CustomerRecord> list = new ArrayList<>();
 		try {
-			if (inputFilePath == null || "".equals(inputFilePath)) {
-				throw new BusinessOperationException(ErrorMessages.NO_FILE_PATH);
-			}
-			File inputF = new File(inputFilePath);
 			br = new BufferedReader(new FileReader(inputF));
+			String header = br.readLine(); // Just skipping and consuming the Header of csv file.
 			while ((line = br.readLine()) != null) {
 				// use comma as separator
 				String[] cols = line.split(",");
-				if (cols[0].equals("Reference")) {
-					continue;
-				}
 				if (cols.length != 6) {
 					throw new BusinessOperationException(ErrorMessages.CSV_FILE_COLUMNS);
 				}

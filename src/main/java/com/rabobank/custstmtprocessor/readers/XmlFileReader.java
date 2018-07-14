@@ -38,14 +38,10 @@ public class XmlFileReader {
 		return instancce;
 	}
 
-	public List<CustomerRecord> processInputFile(String inputFilePath)
+	public List<CustomerRecord> processInputFile(File inputF)
 			throws BusinessOperationException {
 		CustomerRecords customerRecords = null;
 		try {
-			if (inputFilePath == null || "".equals(inputFilePath)) {
-				throw new BusinessOperationException(ErrorMessages.NO_FILE_PATH);
-			}
-			File inputF = new File(inputFilePath);
 			JAXBContext jaxbContext = JAXBContext
 					.newInstance(CustomerRecords.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();

@@ -1,5 +1,6 @@
 package com.rabobank.custstmtprocessor.processor;
 
+import java.io.File;
 import java.util.List;
 
 import com.rabobank.custstmtprocessor.common.ErrorMessages;
@@ -20,10 +21,18 @@ public class FileProcessor {
 	public static List<CustomerRecord> processFile(String inputFilePath)
 			throws BusinessOperationException {
 		List<CustomerRecord> list = null;
-		if (inputFilePath.contains(SupportedFileType.csv.toString())) {
-			list = CsvFileReader.getInstance().processInputFile(inputFilePath);
-		} else if (inputFilePath.contains(SupportedFileType.xml.toString())) {
-			list = XmlFileReader.getInstance().processInputFile(inputFilePath);
+		if (inputFilePath == null || "".equals(inputFilePath)) {
+			throw new BusinessOperationException(ErrorMessages.NO_FILE_PATH);
+		}
+		File inputF = new File(inputFilePath);
+		if (inputF.isFile()
+				&& inputF.getName().endsWith(
+						SupportedFileType.CSV.getFileType())) {
+			list = CsvFileReader.getInstance().processInputFile(inputF);
+		} else if (inputF.isFile()
+				&& inputF.getName().endsWith(
+						SupportedFileType.XML.getFileType())) {
+			list = XmlFileReader.getInstance().processInputFile(inputF);
 		} else {
 			throw new BusinessOperationException(ErrorMessages.IRRELEVANT_FILE);
 		}
