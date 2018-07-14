@@ -45,9 +45,6 @@ public class XmlFileReader {
 			if (inputFilePath == null || "".equals(inputFilePath)) {
 				throw new BusinessOperationException(
 						"Please provide proper input xml file path.");
-			} else if (!inputFilePath.contains(SupportedFileType.xml.toString())) {
-				throw new BusinessOperationException(
-						"Entered file is not XML file, Please enter xml file only for statement processor.");
 			}
 			File inputF = new File(inputFilePath);
 			JAXBContext jaxbContext = JAXBContext
