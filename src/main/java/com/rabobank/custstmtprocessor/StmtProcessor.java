@@ -7,7 +7,7 @@ import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 import com.rabobank.custstmtprocessor.processor.FileProcessor;
 import com.rabobank.custstmtprocessor.reportgen.FailureRecordsReportGenerator;
-import com.rabobank.custstmtprocessor.validators.CustomerReaderValidator;
+import com.rabobank.custstmtprocessor.validators.CustomerRecordValidator;
 
 /**
  * This is the Entry point Main class to process the Statement for file types
@@ -24,7 +24,7 @@ public class StmtProcessor {
 			String inputFilePath = sc.nextLine();
 			List<CustomerRecord> listCustomerRecords = FileProcessor
 					.processFile(inputFilePath);
-			CustomerReaderValidator validator = new CustomerReaderValidator();
+			CustomerRecordValidator validator = new CustomerRecordValidator();
 			validator.validate(listCustomerRecords);
 			FailureRecordsReportGenerator
 					.generateFailureRecordsReport(validator

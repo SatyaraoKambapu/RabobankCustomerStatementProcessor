@@ -14,7 +14,7 @@ import com.rabobank.custstmtprocessor.entity.CustomerRecord;
  * @author skambapu
  * 
  */
-public class CustomerReaderValidator {
+public class CustomerRecordValidator {
 
 	Set<CustomerRecord> invalidCustomerRecords = new HashSet<CustomerRecord>();
 
