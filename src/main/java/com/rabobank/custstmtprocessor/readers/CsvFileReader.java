@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rabobank.custstmtprocessor.common.ErrorMessages;
 import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
@@ -46,8 +47,7 @@ public class CsvFileReader {
 		List<CustomerRecord> list = new ArrayList<>();
 		try {
 			if (inputFilePath == null || "".equals(inputFilePath)) {
-				throw new BusinessOperationException(
-						"Please provide proper input csv file path.");
+				throw new BusinessOperationException(ErrorMessages.NO_FILE_PATH);
 			}
 			File inputF = new File(inputFilePath);
 			br = new BufferedReader(new FileReader(inputF));
@@ -58,9 +58,7 @@ public class CsvFileReader {
 					continue;
 				}
 				if (cols.length != 6) {
-					System.err
-							.println("Need 6 columns in the CSV file to read");
-					return list;
+					throw new BusinessOperationException(ErrorMessages.CSV_FILE_COLUMNS);
 				}
 				CustomerRecord customerRecord = new CustomerRecord();
 				customerRecord.setRecord_referenceId(Long.valueOf(cols[0]));

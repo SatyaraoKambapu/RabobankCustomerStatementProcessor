@@ -7,6 +7,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import com.rabobank.custstmtprocessor.common.ErrorMessages;
 import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.entity.CustomerRecords;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
@@ -42,8 +43,7 @@ public class XmlFileReader {
 		CustomerRecords customerRecords = null;
 		try {
 			if (inputFilePath == null || "".equals(inputFilePath)) {
-				throw new BusinessOperationException(
-						"Please provide proper input xml file path.");
+				throw new BusinessOperationException(ErrorMessages.NO_FILE_PATH);
 			}
 			File inputF = new File(inputFilePath);
 			JAXBContext jaxbContext = JAXBContext

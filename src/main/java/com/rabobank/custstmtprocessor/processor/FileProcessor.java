@@ -2,6 +2,7 @@ package com.rabobank.custstmtprocessor.processor;
 
 import java.util.List;
 
+import com.rabobank.custstmtprocessor.common.ErrorMessages;
 import com.rabobank.custstmtprocessor.common.SupportedFileType;
 import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
@@ -24,12 +25,10 @@ public class FileProcessor {
 		} else if (inputFilePath.contains(SupportedFileType.xml.toString())) {
 			list = XmlFileReader.getInstance().processInputFile(inputFilePath);
 		} else {
-			throw new BusinessOperationException(
-					"Irrelevant file type!!!, Please enter either xml or csv file path.");
+			throw new BusinessOperationException(ErrorMessages.IRRELEVANT_FILE);
 		}
 		if (list == null || list.isEmpty()) {
-			throw new BusinessOperationException(
-					"No records found in the file.");
+			throw new BusinessOperationException(ErrorMessages.NO_RECORDS_FOUND);
 		}
 		return list;
 	}
