@@ -7,6 +7,13 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Used singleton design pattern, It is enough to set all Logger configuration
+ * once when instance is created.
+ * 
+ * @author skambapu
+ * 
+ */
 public class LoggerUtil {
 	static Logger logger = Logger.getLogger(LoggerUtil.class.getName());
 	private static LoggerUtil instance = null;

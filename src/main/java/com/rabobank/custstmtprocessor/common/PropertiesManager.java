@@ -4,6 +4,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Used singleton design pattern, It is enough to load all properties once when instance is created.
+ * @author skambapu
+ *
+ */
 public class PropertiesManager {
 
 	private static PropertiesManager instance = null;
