@@ -31,5 +31,8 @@ Steps to Execute the Program:
 * Output: You can see the report generation for failured records information.
 
 # Used Design Patterns:
-* Singleton design pattern - for report generation
+* Singleton design pattern - for report generation, for logger util, for load properties
 * Factory design pattern - for file type reader class creation.
+
+# Minimum required Softwares
+* Java 7
