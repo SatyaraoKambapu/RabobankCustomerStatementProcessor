@@ -2,7 +2,9 @@ package com.rabobank.custstmtprocessor;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
+import com.rabobank.custstmtprocessor.common.LoggerUtil;
 import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 import com.rabobank.custstmtprocessor.processor.FileProcessor;
@@ -17,6 +19,8 @@ import com.rabobank.custstmtprocessor.validators.CustomerRecordValidator;
  * 
  */
 public class StmtProcessor {
+	static Logger logger = LoggerUtil.getInstance().getLogger();
+
 	public static void main(String[] args) {
 		try {
 			Scanner sc = new Scanner(System.in);
@@ -30,6 +34,7 @@ public class StmtProcessor {
 					.generateFailureRecordsReport(
 							validator.getInvalidCustomerRecords());
 		} catch (BusinessOperationException e) {
+			logger.severe(e.getMessage());
 			System.err.println(e.getMessage());
 		}
 	}

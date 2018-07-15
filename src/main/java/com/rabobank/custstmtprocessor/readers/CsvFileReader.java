@@ -60,8 +60,10 @@ public class CsvFileReader implements
 				list.add(customerRecord);
 			}
 		} catch (FileNotFoundException e1) {
+			logger.severe(e1.getMessage());
 			throw new BusinessOperationException(e1.getMessage(), e1);
 		} catch (IOException e) {
+			logger.severe(e.getMessage());
 			throw new BusinessOperationException(e.getMessage(), e);
 		}
 		logger.info("<Customer records List size from Csv file>" + list.size());

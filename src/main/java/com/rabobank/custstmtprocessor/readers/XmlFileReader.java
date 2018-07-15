@@ -41,6 +41,7 @@ public class XmlFileReader implements
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			customerRecords = (CustomerRecords) unmarshaller.unmarshal(inputF);
 		} catch (JAXBException e) {
+			logger.severe(e.getMessage());
 			throw new BusinessOperationException(e.getMessage(), e);
 		}
 		List<CustomerRecord> customerRecordsList = customerRecords.getRecords();
