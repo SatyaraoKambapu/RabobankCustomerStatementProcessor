@@ -39,12 +39,21 @@ public class FailureRecordsReportGenerator {
 			logger.info("Congrats!! No invalid records found.");
 			return;
 		}
+		// Print the list objects in tabular format.
+		System.out
+				.println("-----------------------------------------------------------------------------");
+		System.out.printf("%20s %50s", "REFERNCE ID", "FAILURE DESCRIPTION");
+		System.out.println();
+		System.out
+				.println("-----------------------------------------------------------------------------");
 		for (CustomerRecord customerRecord : invalidCustomerRecords) {
-			System.out.println("reference Id:"
-					+ customerRecord.getRecord_referenceId()
-					+ "  failure description : "
-					+ customerRecord.getDescription());
+			System.out.format("%20s %50s",
+					customerRecord.getRecord_referenceId(),
+					customerRecord.getDescription());
+			System.out.println();
 		}
+		System.out
+				.println("-----------------------------------------------------------------------------");
 	}
 
 }
