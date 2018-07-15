@@ -10,14 +10,14 @@ import org.junit.Test;
 
 import com.rabobank.custstmtprocessor.common.FileReader;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
-import com.rabobank.custstmtprocessor.readers.CsvFileReader;
+import com.rabobank.custstmtprocessor.readers.XmlFileReader;
 
 public class XmlFileReaderTest {
 	FileReader fileReader = null;
 
 	@Before
 	public void setUp() {
-		fileReader = new CsvFileReader();
+		fileReader = new XmlFileReader();
 	}
 
 	@After
