@@ -1,9 +1,11 @@
 package com.rabobank.custstmtprocessor.factory;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 import com.rabobank.custstmtprocessor.common.ErrorMessages;
 import com.rabobank.custstmtprocessor.common.FileReader;
+import com.rabobank.custstmtprocessor.common.LoggerUtil;
 import com.rabobank.custstmtprocessor.common.SupportedFileType;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 import com.rabobank.custstmtprocessor.readers.CsvFileReader;
@@ -17,6 +19,8 @@ import com.rabobank.custstmtprocessor.readers.XmlFileReader;
  * 
  */
 public class FileReaderFactory {
+
+	static Logger logger = LoggerUtil.getInstance().getLogger();
 
 	public static FileReader createFileReader(File inputFile)
 			throws BusinessOperationException {
@@ -33,6 +37,7 @@ public class FileReaderFactory {
 		} else {
 			throw new BusinessOperationException(ErrorMessages.IRRELEVANT_FILE);
 		}
+		logger.info("<fileReader>" + fileReader);
 		return fileReader;
 	}
 

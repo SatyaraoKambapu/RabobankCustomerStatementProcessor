@@ -1,9 +1,10 @@
 package com.rabobank.custstmtprocessor.reportgen;
 
 import java.util.Set;
+import java.util.logging.Logger;
 
+import com.rabobank.custstmtprocessor.common.LoggerUtil;
 import com.rabobank.custstmtprocessor.entity.CustomerRecord;
-import com.rabobank.custstmtprocessor.readers.CsvFileReader;
 
 /**
  * Used Singleton design pattern This class Job is to generate the records
@@ -13,6 +14,7 @@ import com.rabobank.custstmtprocessor.readers.CsvFileReader;
  * 
  */
 public class FailureRecordsReportGenerator {
+	static Logger logger = LoggerUtil.getInstance().getLogger();
 
 	private static FailureRecordsReportGenerator instance = null;
 
@@ -34,7 +36,7 @@ public class FailureRecordsReportGenerator {
 	public void generateFailureRecordsReport(
 			Set<CustomerRecord> invalidCustomerRecords) {
 		if (invalidCustomerRecords.isEmpty()) {
-			System.out.println("Congrats!! No invalid records found.");
+			logger.info("Congrats!! No invalid records found.");
 			return;
 		}
 		for (CustomerRecord customerRecord : invalidCustomerRecords) {

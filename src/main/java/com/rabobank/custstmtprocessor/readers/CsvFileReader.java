@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.rabobank.custstmtprocessor.common.ErrorMessages;
+import com.rabobank.custstmtprocessor.common.LoggerUtil;
+import com.rabobank.custstmtprocessor.common.SupportedFileType;
 import com.rabobank.custstmtprocessor.entity.CustomerRecord;
 import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
 
@@ -19,11 +22,12 @@ import com.rabobank.custstmtprocessor.exception.BusinessOperationException;
  * @author skambapu
  * 
  */
-public class CsvFileReader implements com.rabobank.custstmtprocessor.common.FileReader {
+public class CsvFileReader implements
+		com.rabobank.custstmtprocessor.common.FileReader {
 
-	/* (non-Javadoc)
-	 * @see com.rabobank.custstmtprocessor.readers.FileReader#processInputFile(java.io.File)
-	 */
+	static Logger logger = LoggerUtil.getInstance().getLogger();
+
+	@SuppressWarnings("resource")
 	@Override
 	public List<CustomerRecord> processInputFile(File inputF)
 			throws BusinessOperationException {
@@ -31,6 +35,11 @@ public class CsvFileReader implements com.rabobank.custstmtprocessor.common.File
 		String line;
 		List<CustomerRecord> list = new ArrayList<>();
 		try {
+			if (inputF.isFile()
+					&& !inputF.getName().endsWith(
+							SupportedFileType.CSV.getFileType())) {
+				throw new BusinessOperationException(ErrorMessages.NO_CSV);
+			}
 			br = new BufferedReader(new FileReader(inputF));
 			String header = br.readLine(); // Just skipping and consuming the
 											// Header of csv file.
@@ -55,6 +64,7 @@ public class CsvFileReader implements com.rabobank.custstmtprocessor.common.File
 		} catch (IOException e) {
 			throw new BusinessOperationException(e.getMessage(), e);
 		}
+		logger.info("<Customer records List size from Csv file>" + list.size());
 		return list;
 	}
 }
